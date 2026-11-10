@@ -8,6 +8,7 @@ const connectDatabase = require('./connection');
 const routes = require('./routes');
 
 const app = express();
+app.set('trust proxy', 2); // CloudFront -> nginx -> app: use the real client IP for rate limiting
 
 // Allow the dev frontend from localhost or a LAN address (phone testing).
 const LOCAL_ORIGIN = new RegExp('^https?:\\/\\/(localhost|127\\.0\\.0\\.1|192\\.168\\.[0-9.]+|10\\.[0-9.]+):[0-9]+$');
