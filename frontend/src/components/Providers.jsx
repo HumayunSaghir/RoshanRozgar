@@ -68,10 +68,15 @@ export default function Providers({ children }) {
         setAttention(0);
       }
       return u;
-    } catch {
-      setUser(null);
-      setSessionCookie(null);
-      setAttention(0);
+    } catch (e) {
+      // Only a real "not logged in" answer ends the session. A network error or a restarting server
+      // must not wipe the session cookie, otherwise the next click bounces to the login page.
+      if (e?.status === 401) {
+        setUser(null);
+        setSessionCookie(null);
+        setAttention(0);
+        return null;
+      }
       return null;
     } finally {
       setReady(true);
