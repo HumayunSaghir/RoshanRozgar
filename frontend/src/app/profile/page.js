@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Shell from '@/components/Shell';
 import { useAuth, useLang, useLoc } from '@/components/Providers';
 import AreaPicker from '@/components/AreaPicker';
+import AvatarUploader from '@/components/AvatarUploader';
 import { Button, Card, Notice } from '@/components/ui';
 import { api } from '@/lib/api';
 
@@ -35,6 +36,7 @@ export default function CustomerProfile() {
       <div className="container-rr max-w-[640px] pb-16 pt-8">
         <h1 className="t-heading-xl text-[1.875rem] sm:text-[2.5rem]">{tr('My profile')}</h1>
         <Card className="mt-6 space-y-5 p-6">
+          <AvatarUploader />
           <p className="text-neutral-600">{tr('Phone')}: <b className="text-text">{user?.phone}</b></p>
           <div>
             <label htmlFor="n" className="font-bold">{tr('Name')}</label>

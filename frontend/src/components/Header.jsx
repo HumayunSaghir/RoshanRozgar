@@ -82,7 +82,7 @@ export default function Header() {
               <NotificationBell />
               <div className="relative" ref={menuRef}>
                 <button type="button" onClick={() => setMenu((m) => !m)} aria-expanded={menu} aria-haspopup="menu" className="flex cursor-pointer items-center gap-3 rounded-full py-1 pl-1 pr-3 hover:bg-neutral-50">
-                  <Avatar initials={(user.name || 'U')[0]} size={48} />
+                  <Avatar initials={(user.name || 'U')[0]} src={user.avatarUrl} size={48} />
                   <span className="text-lg font-bold">{user.name ? user.name.split(' ')[user.name.startsWith('Ustad') ? 1 : 0] : tr('Account')}</span>
                   <ChevronDown className="h-5 w-5 text-neutral-500" aria-hidden />
                 </button>

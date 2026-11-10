@@ -42,6 +42,7 @@ export const api = {
   get: (p) => request('GET', p),
   post: (p, b) => request('POST', p, b),
   put: (p, b) => request('PUT', p, b),
+  del: (p) => request('DELETE', p),
   form: (p, fd) => request('POST', p, fd, true),
 };
 

@@ -42,6 +42,7 @@ function serializeApplicant(u) {
     id: String(u._id),
     name: u.name,
     initials: initialsOf(u.name),
+    avatarUrl: u.avatarUrl || '',
     phone: u.phone,
     trade: u.trade,
     area: u.area,

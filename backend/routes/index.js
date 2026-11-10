@@ -19,6 +19,8 @@ router.post('/auth/verify-otp', rateLimit({ max: 20 }), auth.verifyOtp);
 router.post('/auth/logout', auth.logout);
 router.get('/auth/me', checkAuth, auth.me);
 router.put('/auth/me', checkAuth, auth.updateMe);
+router.post('/auth/me/avatar', checkAuth, upload.single('image'), auth.setAvatar);
+router.delete('/auth/me/avatar', checkAuth, auth.removeAvatar);
 
 // ---- discovery ----
 router.get('/areas', worker.listAreas);

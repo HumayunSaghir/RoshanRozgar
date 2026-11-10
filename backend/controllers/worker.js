@@ -135,13 +135,13 @@ async function getWorkerDashboard(req, res) {
     Booking.find({ worker: worker._id, status: { $in: ['requested', 'agreed'] } })
       .sort({ createdAt: -1 })
       .limit(20)
-      .populate('customer', 'name phone area')
-      .populate('worker', 'name location trade rating reviewCount area rate'),
+      .populate('customer', 'name avatarUrl phone area')
+      .populate('worker', 'name avatarUrl location trade rating reviewCount area rate'),
     Booking.find({ worker: worker._id, status: { $in: ['confirmed', 'on_the_way'] } })
       .sort({ scheduledFor: 1 })
       .limit(10)
-      .populate('customer', 'name phone area')
-      .populate('worker', 'name location trade rating reviewCount area rate'),
+      .populate('customer', 'name avatarUrl phone area')
+      .populate('worker', 'name avatarUrl location trade rating reviewCount area rate'),
     Booking.countDocuments({
       worker: worker._id,
       status: { $in: ['confirmed', 'on_the_way', 'completed'] },

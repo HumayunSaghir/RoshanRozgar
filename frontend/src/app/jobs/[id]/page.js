@@ -181,7 +181,7 @@ export default function JobDetailPage() {
               return (
                 <li key={b.id} className={`rounded-3xl border-2 bg-white p-5 ${accepted ? 'border-green-500' : 'border-neutral-200'}`}>
                   <div className="flex items-start gap-4">
-                    <Avatar initials={w.initials} size={56} />
+                    <Avatar initials={w.initials} src={w.avatarUrl} size={56} />
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-lg font-bold">{w.name}</p>
                       <p className="flex flex-wrap items-center gap-x-3 text-neutral-600">

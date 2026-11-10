@@ -35,7 +35,7 @@ function HeroPreview() {
       {top && (
         <div className="absolute inset-x-6 bottom-0 translate-y-1/3 rounded-3xl border border-neutral-200 bg-white p-4 shadow-medium xl:inset-x-10 xl:p-5">
           <div className="flex items-start gap-4">
-            <Avatar initials={top.initials} size={64} />
+            <Avatar initials={top.initials} src={top.avatarUrl} size={64} />
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-3">
                 <p className="t-heading-sm">{top.name}</p>

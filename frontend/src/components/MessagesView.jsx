@@ -216,7 +216,7 @@ function Chat({ base = '/messages' }) {
             return (
               <li key={b.id}>
                 <Link href={`${base}${qs({ b: b.id })}`} aria-current={b.id === bid ? 'true' : undefined} className={cx('flex min-h-[88px] items-center gap-4 rounded-2xl p-4', b.id === bid ? 'bg-green-50' : 'hover:bg-neutral-50')}>
-                  <Avatar initials={o.initials} size={56} />
+                  <Avatar initials={o.initials} src={o.avatarUrl} size={56} />
                   <span className="min-w-0">
                     <span className="block truncate text-lg font-bold">{o.name}</span>
                     <span className="block truncate text-neutral-600">{preview(b)}</span>
@@ -240,7 +240,7 @@ function Chat({ base = '/messages' }) {
           <>
             <div className="flex items-center gap-3 border-b border-neutral-200 bg-white px-4 py-3 lg:px-6">
               <Link href={base} aria-label={tr('Back')} className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-neutral-50 lg:hidden"><ArrowLeft className="h-6 w-6" aria-hidden /></Link>
-              <Avatar initials={other.initials} size={52} />
+              <Avatar initials={other.initials} src={other.avatarUrl} size={52} />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-lg font-bold">{other.name}</p>
                 <p className="flex items-center gap-2 text-green-700">

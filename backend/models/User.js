@@ -7,6 +7,7 @@ const userSchema = new Schema(
     role: { type: String, enum: ['customer', 'worker', 'admin'], required: true },
     city: { type: String, default: 'Islamabad' },
     area: { type: String, default: '' },
+    avatarUrl: { type: String, default: '' },
     location: {
       type: { type: String, enum: ['Point'], default: 'Point' },
       coordinates: { type: [Number], default: [72.9985, 33.6695] }, // [lng, lat]

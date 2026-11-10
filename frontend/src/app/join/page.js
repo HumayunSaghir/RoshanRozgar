@@ -8,6 +8,7 @@ import PhoneOtp from '@/components/PhoneOtp';
 import ProfileEditor from '@/components/ProfileEditor';
 import { useAuth, useLang } from '@/components/Providers';
 import PhotoUploader from '@/components/PhotoUploader';
+import AvatarUploader from '@/components/AvatarUploader';
 import { AIChip, AudioButton, Button, Card, MicButton, Notice, cx } from '@/components/ui';
 import { api, assetUrl } from '@/lib/api';
 import { fmtTime, useVoiceRecorder, voiceSupport } from '@/lib/voice';
@@ -221,6 +222,7 @@ function Join() {
             <Card className="order-1 p-5 sm:p-10">
               <h1 className="t-heading-lg text-[1.75rem] sm:text-[2.25rem]">{tr('Review profile')}</h1>
               <p className="mt-1 text-neutral-600">{tr('Does everything look right? Tap any row to edit it.')}</p>
+              <div className="mt-4 rounded-2xl border border-neutral-200 p-4"><AvatarUploader size={88} /></div>
               {transcript && <p lang="ur" className="urdu mt-4 rounded-2xl bg-neutral-50 p-4 text-xl" dir="rtl">{transcript}</p>}
               <div className="mt-5 rounded-2xl border border-neutral-200 p-4">
                 <p className="font-bold">{tr('Work photos')} · {photos.length}</p>

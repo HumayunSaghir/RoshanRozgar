@@ -23,7 +23,7 @@ export default function WorkerCard({ worker, selected, onSelect, onOpen }) {
       onClick={() => onSelect?.(worker.id)}
     >
       <div className="flex items-start gap-4">
-        <Avatar initials={worker.initials} size={72} muted={busy} className="sm:!h-20 sm:!w-20" />
+        <Avatar initials={worker.initials} src={worker.avatarUrl} size={72} muted={busy} className="sm:!h-20 sm:!w-20" />
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
             <h3 className="t-heading-sm truncate sm:text-xl">

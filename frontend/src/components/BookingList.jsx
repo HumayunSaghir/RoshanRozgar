@@ -40,7 +40,7 @@ export default function BookingList({ role, empty }) {
         return (
           <li key={b.id}>
             <Link href={href} className="flex min-h-[88px] items-center gap-4 rounded-2xl border border-neutral-200 bg-white p-4 hover:border-green-500">
-              <Avatar initials={other.initials} size={56} />
+              <Avatar initials={other.initials} src={other.avatarUrl} size={56} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-lg font-bold">{other.name}</span>
                 <span className="block truncate text-neutral-600">{b.aiSummary.title || tr(tradeById(b.trade)?.label)} · {b.address.area} · {tr(b.whenText)}</span>

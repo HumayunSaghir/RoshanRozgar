@@ -228,7 +228,7 @@ export default function WorkerDashboard() {
           {selected && (
             <>
               <div className="flex items-center gap-4">
-                <Avatar initials={selected.customer.initials} size={64} className="!bg-blue-100 !text-blue-800" />
+                <Avatar initials={selected.customer.initials} src={selected.customer.avatarUrl} size={64} className="!bg-blue-100 !text-blue-800" />
                 <div className="min-w-0 flex-1">
                   <p className="t-heading-sm text-[1.375rem]">{selected.customer.name}</p>
                   <p className="text-neutral-600">{tr(selected.address.area || '')} · {tr('{n} km away', { n: selected.distanceKm })} · {new Date(selected.createdAt).toLocaleTimeString(lang === 'ur' ? 'ur-PK' : 'en-GB', { hour: '2-digit', minute: '2-digit' })}</p>

@@ -92,7 +92,7 @@ function Profile() {
         <div className="space-y-5">
           <section className="rounded-3xl border border-neutral-200 bg-white p-5 sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-8">
-              <Avatar initials={w.initials} size={112} dot={status === 'available'} className="sm:!h-40 sm:!w-40 sm:!text-[3.75rem]" />
+              <Avatar initials={w.initials} src={w.avatarUrl} size={112} dot={status === 'available'} className="sm:!h-40 sm:!w-40 sm:!text-[3.75rem]" />
               <div className="min-w-0 flex-1">
                 <h1 className="t-heading-xl sm:text-[2.75rem]">{w.name}</h1>
                 <p className="mt-1 text-lg text-neutral-600">

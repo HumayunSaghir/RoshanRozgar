@@ -48,7 +48,7 @@ function Applicant({ w, onDone, onOpen }) {
   return (
     <Card className="p-4 sm:p-6">
       <div className="flex items-start gap-4">
-        <Avatar initials={w.initials} size={56} />
+        <Avatar initials={w.initials} src={w.avatarUrl} size={56} />
         <div className="min-w-0 flex-1">
           <p className="truncate text-lg font-bold">{w.name || tr('Unnamed worker')}</p>
           <p className="text-neutral-600">{tr(tradeById(w.trade)?.label || w.trade)} · {trLoc(w.area)} · {tr('{n} years of experience', { n: w.experienceYears })}</p>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Camera, Mic } from 'lucide-react';
 import ProfileEditor from '@/components/ProfileEditor';
 import PhotoUploader from '@/components/PhotoUploader';
+import AvatarUploader from '@/components/AvatarUploader';
 import { useAuth, useLang } from '@/components/Providers';
 import { Button, Notice, TrustBadge } from '@/components/ui';
 import { api, assetUrl } from '@/lib/api';
@@ -58,7 +59,8 @@ export default function WorkerProfileEdit() {
   return (
     <div className="mx-auto max-w-[800px]">
       <h1 className="t-heading-xl text-[1.875rem] sm:text-[2.5rem]">{tr('My profile')}</h1>
-      <p className="mt-1 text-neutral-600">{tr('Phone')}: {user.phone} · {tr('shown to customers only after a booking is confirmed.')}</p>
+      <AvatarUploader className="mt-4" />
+      <p className="mt-4 text-neutral-600">{tr('Phone')}: {user.phone} · {tr('shown to customers only after a booking is confirmed.')}</p>
       <div className="mt-3 flex flex-wrap gap-2">{user.badges.map((b) => <TrustBadge key={b}>{/^\d+ jobs done$/.test(b) ? tr('{n} jobs done', { n: parseInt(b, 10) }) : tr(b)}</TrustBadge>)}</div>
 
       <div className="mt-6"><ProfileEditor value={fields} onChange={(v) => { setFields(v); setSaved(false); }} /></div>

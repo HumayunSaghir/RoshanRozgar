@@ -2,6 +2,7 @@ const User = require('../models/User');
 const OtpCode = require('../models/OtpCode');
 const { signToken, normalizePhone } = require('../services/auth');
 const { serializeSelf } = require('./serialize');
+const { persist } = require('../middlewares/upload');
 
 const whatsapp = require('../services/whatsapp');
 
@@ -103,4 +104,24 @@ async function updateMe(req, res) {
   return res.json({ user: serializeSelf(user) });
 }
 
-module.exports = { requestOtp, verifyOtp, me, logout, updateMe };
+// POST /api/auth/me/avatar  (multipart, field "image")  - profile picture for any role
+async function setAvatar(req, res) {
+  const user = await User.findById(req.user._id);
+  if (!user) return res.status(401).json({ error: 'Account not found' });
+  const url = await persist(req.file, 'image');
+  if (!url) return res.status(400).json({ error: 'Please upload an image in jpg, png or webp format' });
+  user.avatarUrl = url;
+  await user.save();
+  return res.json({ user: serializeSelf(user) });
+}
+
+// DELETE /api/auth/me/avatar
+async function removeAvatar(req, res) {
+  const user = await User.findById(req.user._id);
+  if (!user) return res.status(401).json({ error: 'Account not found' });
+  user.avatarUrl = '';
+  await user.save();
+  return res.json({ user: serializeSelf(user) });
+}
+
+module.exports = { requestOtp, verifyOtp, me, logout, updateMe, setAvatar, removeAvatar };

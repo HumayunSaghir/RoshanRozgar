@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { Check, Mic, Loader2, ShieldCheck, Sparkles, Star, Volume2 } from 'lucide-react';
 import { speak } from '@/lib/voice';
+import { assetUrl } from '@/lib/api';
 import { useLang } from './Providers';
 
 const cx = (...a) => a.filter(Boolean).join(' ');
@@ -104,10 +106,16 @@ export function AIChip({ children, className }) {
 // ---------------------------------------------------------------------------------------
 // Avatar with initials
 // ---------------------------------------------------------------------------------------
-export function Avatar({ initials, size = 56, dot, muted, className }) {
+export function Avatar({ initials, src, size = 56, dot, muted, className }) {
+  const [broken, setBroken] = useState(false);
+  useEffect(() => setBroken(false), [src]);
+  const showImg = Boolean(src) && !broken;
   return (
     <span className={cx('relative inline-flex shrink-0 items-center justify-center rounded-full bg-green-200 font-bold text-green-800', muted && 'opacity-60', className)} style={{ width: size, height: size, fontSize: size * 0.38 }} aria-hidden>
-      {initials}
+      {showImg ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={assetUrl(src)} alt="" loading="lazy" decoding="async" onError={() => setBroken(true)} className="h-full w-full rounded-full object-cover" />
+      ) : initials}
       {dot && <span className="absolute bottom-0 right-0 h-[22%] w-[22%] rounded-full border-2 border-white bg-green-500" />}
     </span>
   );

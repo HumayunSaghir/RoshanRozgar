@@ -51,7 +51,7 @@ export default function Recommendations({ jobId }) {
           return (
             <li key={w.id} className={cx('flex flex-col rounded-3xl border-2 bg-white p-5', r.rank === 1 ? 'border-green-500' : 'border-neutral-200')}>
               <div className="flex items-start gap-3">
-                <Avatar initials={w.initials} size={52} />
+                <Avatar initials={w.initials} src={w.avatarUrl} size={52} />
                 <div className="min-w-0 flex-1">
                   <p className="flex items-center gap-1 truncate text-lg font-bold">{w.name} {w.verified && <BadgeCheck className="h-5 w-5 shrink-0 text-green-700" aria-label={tr('ID verified')} />}</p>
                   <p className="flex flex-wrap items-center gap-x-3 text-sm text-neutral-600">

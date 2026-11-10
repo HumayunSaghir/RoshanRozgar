@@ -17,8 +17,8 @@ const notifyOther = (booking, byId, payload) => {
   return notify(other, { link: `/messages?b=${booking._id}`, ...payload });
 };
 
-const WORKER_FIELDS = 'name phone location trade rating reviewCount area rate isAvailable';
-const CUSTOMER_FIELDS = 'name phone area';
+const WORKER_FIELDS = 'name avatarUrl phone location trade rating reviewCount area rate isAvailable';
+const CUSTOMER_FIELDS = 'name avatarUrl phone area';
 
 function populate(q) {
   return q.populate('worker', WORKER_FIELDS).populate('customer', CUSTOMER_FIELDS);

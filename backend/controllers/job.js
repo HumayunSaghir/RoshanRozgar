@@ -39,7 +39,7 @@ function serializeJob(job, extra = {}) {
     bookingId: j.booking ? String(j.booking) : null,
     expiresAt: j.expiresAt,
     createdAt: j.createdAt,
-    customer: customer ? { id: String(customer._id), name: customer.name || 'Customer', initials: initials(customer.name || 'Customer') } : undefined,
+    customer: customer ? { id: String(customer._id), name: customer.name || 'Customer', initials: initials(customer.name || 'Customer'), avatarUrl: customer.avatarUrl || '' } : undefined,
     ...extra,
   };
 }
@@ -119,7 +119,7 @@ async function myJobs(req, res) {
 async function feed(req, res) {
   const me = await User.findById(req.user._id);
   const mine = loc({ address: { location: me.location } });
-  const jobs = await Job.find({ status: 'open', expiresAt: { $gt: new Date() }, trade: me.trade }).populate('customer', 'name').sort({ createdAt: -1 }).limit(60);
+  const jobs = await Job.find({ status: 'open', expiresAt: { $gt: new Date() }, trade: me.trade }).populate('customer', 'name avatarUrl').sort({ createdAt: -1 }).limit(60);
   const bids = await Bid.find({ worker: me._id, status: { $ne: 'withdrawn' }, job: { $in: jobs.map((j) => j._id) } });
   const byJob = new Map(bids.map((x) => [String(x.job), x]));
   const items = jobs
@@ -143,7 +143,7 @@ async function myBids(req, res) {
 
 // GET /api/jobs/:id
 async function getJob(req, res) {
-  const job = await Job.findById(req.params.id).populate('customer', 'name');
+  const job = await Job.findById(req.params.id).populate('customer', 'name avatarUrl');
   if (!job) return res.status(404).json({ error: 'Job not found' });
   const uid = String(req.user._id);
 
