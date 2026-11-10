@@ -22,3 +22,7 @@ journalctl -u rr-deploy -n 50      # deploy log
 journalctl -u rr-api -f            # API log (WhatsApp status, errors)
 systemctl status rr-api rr-web nginx
 ```
+
+## Live URLs
+- Site: https://ddquhjrd71t1i.cloudfront.net
+- API health: https://ddquhjrd71t1i.cloudfront.net/api/health
